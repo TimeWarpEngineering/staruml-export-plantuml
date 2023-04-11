@@ -19,15 +19,16 @@ function convertToPlantUML(elements) {
     } else if (element instanceof type.UMLAssociation) {
       const end1 = element.end1;
       const end2 = element.end2;
-      plantUML += `${end1.reference.name} ${end1.multiplicity ? `"${end1.multiplicity}"` : ''} -- ${end2.multiplicity ? `"${end2.multiplicity}"` : ''} ${end2.reference.name}`;
-
+      const end1Aggregate = end1.aggregation === "composite" ? "*" : end1.aggregation === "shared" ? "o" : "";
+      const end2Aggregate = end2.aggregation === "composite" ? "*" : end2.aggregation === "shared" ? "o" : "";
+      
+      plantUML += `${end1.reference.name} ${end1.multiplicity ? `"${end1.multiplicity}"` : ''} ${end1Aggregate}--${end2Aggregate} ${end2.multiplicity ? `"${end2.multiplicity}"` : ''} ${end2.reference.name}`;
 
       if (element.name) {
         plantUML += ` : ${element.name}`;
       }
 
       plantUML += '\n';
-
     }
   });
 
