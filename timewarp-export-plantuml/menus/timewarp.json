@@ -1,0 +1,14 @@
+{
+  "menu": [
+    {
+      "id": "tools",
+      "submenu": [
+        {
+          "label": "Export Selected to PlantUML",
+          "id": "tool.export-plantuml",
+          "command": "export-plantuml:copy-to-clipboard"
+        }
+      ]
+    }
+  ]
+}

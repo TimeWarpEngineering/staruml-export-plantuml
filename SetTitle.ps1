@@ -1,0 +1,1 @@
+$Host.UI.RawUI.WindowTitle = "staruml-export-plantuml"

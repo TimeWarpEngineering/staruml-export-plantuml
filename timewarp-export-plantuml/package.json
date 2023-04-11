@@ -1,0 +1,17 @@
+{
+  "name": "timewarp.plantuml",
+  "title": "PlantUML Export",
+  "description": "Export StarUML diagrams to PlantUML format",
+  "homepage": "https://github.com/TimeWarpEngineering/staruml-export-plantuml",
+  "version": "1.0.0",
+  "keywords": ["plantuml", "export", "chatgpt"],
+  "author": {
+    "name": "Steven T. Cramer",
+    "email": "StevenTCramer@protonmail.com",
+    "url": "https://github.com/StevenTCramer"
+  },
+  "license": "THEUNLICENSE",
+  "engines": {
+    "staruml": ">=3.0.0"
+  }
+}
