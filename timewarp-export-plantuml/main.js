@@ -4,9 +4,15 @@ function convertToPlantUML(elements) {
   let plantUML = '@startuml\n';
 
   elements.forEach((element) => {
-    // Add documentation as a comment
+    // Include element documentation as comments
     if (element.documentation && element.documentation.trim() !== '') {
       plantUML += `' ${element.documentation.split('\n').join('\n\' ')}\n`;
+    }
+
+    // Include AI tag information as comments
+    const aiTag = element.tags.find(tag => tag.name === 'AI');
+    if (aiTag && aiTag.value) {
+      plantUML += `' AI_CMD: ${aiTag.value}\n`;
     }
 
     if (element instanceof type.UMLClass) {
@@ -31,6 +37,7 @@ function convertToPlantUML(elements) {
       }
 
       plantUML += '\n';
+
     }
   });
 
@@ -38,6 +45,7 @@ function convertToPlantUML(elements) {
 
   return plantUML;
 }
+
 
 
 function copySelectedToClipboard() {
