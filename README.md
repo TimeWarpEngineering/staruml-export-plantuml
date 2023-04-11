@@ -3,6 +3,13 @@
 This repository contains a plugin to convert StarUML models to PlantUML diagrams.
 It's a simple and easy-to-use tool that extracts classes and associations from StarUML and generates PlantUML syntax to visualize them.
 
+## Features
+
+- Extracts UML Classes, attributes, operations, and associations
+- Supports multiplicities on associations
+- Includes element documentation as comments
+- Supports AI tags to provide additional information to AI tools like ChatGPT
+
 ## How to use
 
 1. Install the StarUML to PlantUML Converter plugin.
