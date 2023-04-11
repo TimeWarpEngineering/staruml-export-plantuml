@@ -4,6 +4,11 @@ function convertToPlantUML(elements) {
   let plantUML = '@startuml\n';
 
   elements.forEach((element) => {
+    // Add documentation as a comment
+    if (element.documentation && element.documentation.trim() !== '') {
+      plantUML += `' ${element.documentation.split('\n').join('\n\' ')}\n`;
+    }
+
     if (element instanceof type.UMLClass) {
       plantUML += `class ${element.name} {\n`;
 
@@ -19,10 +24,7 @@ function convertToPlantUML(elements) {
     } else if (element instanceof type.UMLAssociation) {
       const end1 = element.end1;
       const end2 = element.end2;
-      const end1Aggregate = end1.aggregation === "composite" ? "*" : end1.aggregation === "shared" ? "o" : "";
-      const end2Aggregate = end2.aggregation === "composite" ? "*" : end2.aggregation === "shared" ? "o" : "";
-      
-      plantUML += `${end1.reference.name} ${end1.multiplicity ? `"${end1.multiplicity}"` : ''} ${end1Aggregate}--${end2Aggregate} ${end2.multiplicity ? `"${end2.multiplicity}"` : ''} ${end2.reference.name}`;
+      plantUML += `${end1.reference.name} ${end1.multiplicity ? `"${end1.multiplicity}"` : ''} -- ${end2.multiplicity ? `"${end2.multiplicity}"` : ''} ${end2.reference.name}`;
 
       if (element.name) {
         plantUML += ` : ${element.name}`;
